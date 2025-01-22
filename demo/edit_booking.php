@@ -4,10 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Database configuration
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "hotel_db";
+
 
 // Initialize variables
 $booking_details = null;
@@ -15,11 +12,8 @@ $success_message = '';
 $error_message = '';
 
 // Create connection
-$conn = mysqli_connect($host, $username, $password, $database);
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
+ include('dbconnect.php');
+ 
 // Check if booking ID is passed in the URL
 if (isset($_GET['id'])) {
     $booking_id = (int)$_GET['id'];

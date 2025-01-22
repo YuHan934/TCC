@@ -1,5 +1,5 @@
 <?php
-define("DBNAME", "Menu");
+define("DBNAME", "hotel_db");
 define("DBHOST", "localhost");
 define("DBUSER", "root");
 define("DBPASS", "TCC12345");

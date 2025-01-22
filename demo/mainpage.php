@@ -4,10 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Database configuration
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "hotel_db";
+include('dbconnect.php');
 
 // Initialize variables
 $available_rooms = null;
@@ -18,20 +15,7 @@ $success_message = '';
 // Handle form submissions for booking and updates
 try {
     // Create connection
-    $conn = mysqli_connect($host, $username, $password);
-    if (!$conn) {
-        throw new Exception("Connection failed: " . mysqli_connect_error());
-    }
-
-    // Create and select database
-    if (!mysqli_select_db($conn, $database)) {
-        $sql = "CREATE DATABASE IF NOT EXISTS $database";
-        if (!mysqli_query($conn, $sql)) {
-            throw new Exception("Error creating database: " . mysqli_error($conn));
-        }
-        mysqli_select_db($conn, $database);
-    }
-
+   
     // Check if tables need to be created
     $result = mysqli_query($conn, "SHOW TABLES LIKE 'room_types'");
     $tableExists = mysqli_num_rows($result) > 0;
